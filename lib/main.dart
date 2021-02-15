@@ -73,20 +73,21 @@ class Keypad extends StatelessWidget {
       ),
     );
   }
+
   void pressedKey(int i) {
     print("a key was pressed " + i.toString());
   }
 }
 
 class KeypadKey extends StatelessWidget {
-  KeypadKey(this.myNumber, this.f);
-  Function f;
+  KeypadKey(this.myNumber, this.pressedFunction);
+  Function pressedFunction;
   int myNumber;
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () {
-        f(myNumber);
+        pressedFunction(myNumber);
       },
       label: Text(myNumber.toString()),
       backgroundColor: Colors.pink,
