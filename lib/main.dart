@@ -47,43 +47,46 @@ class Keypad extends StatelessWidget {
       height: 200.0,
       child: Column(
           children: <Widget>[
-            KeypadKey(0),
+            KeypadKey(0,pressedKey),
             Row(
               children: [
-                KeypadKey(1),
-                KeypadKey(2),
-                KeypadKey(3),
+                KeypadKey(1,pressedKey),
+                KeypadKey(2,pressedKey),
+                KeypadKey(3,pressedKey),
               ],
             ),
             Row(
               children: [
-                KeypadKey(4),
-                KeypadKey(5),
-                KeypadKey(6),
+                KeypadKey(4,pressedKey),
+                KeypadKey(5,pressedKey),
+                KeypadKey(6,pressedKey),
               ],
             ),
             Row(
               children: [
-                KeypadKey(7),
-                KeypadKey(8),
-                KeypadKey(9),
+                KeypadKey(7,pressedKey),
+                KeypadKey(8,pressedKey),
+                KeypadKey(9,pressedKey),
               ],
             ),
           ]
       ),
     );
   }
-
+  void pressedKey() {
+    print("a key was pressed");
+  }
 }
 
 class KeypadKey extends StatelessWidget {
-  KeypadKey(this.myNumber);
+  KeypadKey(this.myNumber, this.f);
+  Function f;
   int myNumber;
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () {
-        // Add your onPressed code here!
+        f();
       },
       label: Text(myNumber.toString()),
       backgroundColor: Colors.pink,
