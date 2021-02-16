@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testatron/Keypad.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,78 +38,20 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class Keypad extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      color: Colors.amber[600],
-      width: 200.0,
-      height: 200.0,
-      child: Column(
-          children: <Widget>[
-            KeypadKey(0,pressedKey),
-            Row(
-              children: [
-                KeypadKey(1,pressedKey),
-                KeypadKey(2,pressedKey),
-                KeypadKey(3,pressedKey),
-              ],
-            ),
-            Row(
-              children: [
-                KeypadKey(4,pressedKey),
-                KeypadKey(5,pressedKey),
-                KeypadKey(6,pressedKey),
-              ],
-            ),
-            Row(
-              children: [
-                KeypadKey(7,pressedKey),
-                KeypadKey(8,pressedKey),
-                KeypadKey(9,pressedKey),
-              ],
-            ),
-          ]
-      ),
-    );
-  }
 
-  void pressedKey(int i) {
-    print("a key was pressed " + i.toString());
-  }
+
+class MiddleContent extends StatefulWidget {
+  @override
+  _MiddleContentState createState() => _MiddleContentState();
 }
 
-class KeypadKey extends StatelessWidget {
-  KeypadKey(this.myNumber, this.pressedFunction);
-  Function pressedFunction;
-  int myNumber;
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton.extended(
-      onPressed: () {
-        pressedFunction(myNumber);
-      },
-      label: Text(myNumber.toString()),
-      backgroundColor: Colors.pink,
-    );
-  }
-}
+class _MiddleContentState extends State<MiddleContent> {
+  var typedText = "";
 
-class MiddleContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Center(
-        child: FloatingActionButton.extended(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          label: Text('Approve'),
-          icon: Icon(Icons.thumb_up),
-          backgroundColor: Colors.pink,
-        ),
-      ),
+      child: Text(typedText),
     );
   }
 }
